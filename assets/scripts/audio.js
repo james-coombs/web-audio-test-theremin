@@ -5,9 +5,6 @@ const audioCtxA = new(window.AudioContext || window.webkitAudioContext)();
 const audioCtxS = new(window.AudioContext || window.webkitAudioContext)();
 const audioCtxD = new(window.AudioContext || window.webkitAudioContext)();
 
-const canvas = document.querySelector('.visualizer');
-const myCanvas = canvas.getContext('2d');
-
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 
@@ -45,60 +42,6 @@ const startOscoscillatorW = () => {
     oscillatorW.start();
   }
 };
-
-const analyserW = audioCtxW.createAnalyser();
-
-oscillatorW.connect(analyserW);
-// analyserW.connect(audioCtxW.destination);
-
-// analyserW.fftSize = 2048;
-// let bufferLengthW = analyserW.frequencyBinCount;
-// let dataArrayW = new Uint8Array(bufferLengthW);
-//
-// analyserW.getByteTimeDomainData(dataArrayW);
-//
-// myCanvas.clearRect(0, 0, WIDTH, HEIGHT);
-//
-// function draw() {
-//   drawVisual = requestAnimationFrame(draw);
-//
-//   analyserW.getByteTimeDomainData(dataArrayW);
-//
-//   myCanvas.fillStyle = 'rgb(230, 20, 210)';
-//   myCanvas.fillRect(0, 0, WIDTH, HEIGHT);
-//   myCanvas.lineWidth = 2;
-//   myCanvas.strokeStyle = 'rgb(40, 95, 95)';
-//   myCanvas.beginPath();
-//
-//   let sliceWidth = WIDTH * 1.0 / bufferLengthW;
-//   let x = 0;
-//
-//   for (let i = 0; i < bufferLengthW; i++) {
-//
-//     let v = dataArrayW[i] / 128.0;
-//     let y = v * HEIGHT / 2;
-//
-//     if (i === 0) {
-//       myCanvas.moveTo(x, y);
-//     } else {
-//       myCanvas.lineTo(x, y);
-//     }
-//
-//     x += sliceWidth;
-//   }
-//
-//   myCanvas.lineTo(canvas.width, canvas.height / 2);
-//   myCanvas.stroke();
-// }
-//
-// const analyserButton = document.getElementById("analyserButton");
-//
-// analyserButton.addEventListener('click', function() {
-//   startOscoscillatorW();
-//   draw();
-// });
-
-
 
 oscillatorA.connect(gainNodeA);
 gainNodeA.connect(audioCtxA.destination);
